@@ -1,4 +1,4 @@
-# PayNest Bank Transaction History
+# PayNest Bank 
 
 ## Overview
 **PayNest Bank** is a dynamic banking application providing customers with a seamless experience to manage their transaction history. Built using **Spring Boot** and **Thymeleaf**, the project leverages modern web technologies for a responsive and user-friendly interface.
