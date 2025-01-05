@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - PayNest Bank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to PayNest Bank for secure banking solutions.">
+    <meta name="author" content="Code With PayNest">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #2e2e2e, #f4a300);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .navbar-custom {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar-custom a {
+            color: #fff !important;
+        }
+
+        .navbar-custom .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-custom .social-icons a {
+            color: #fff;
+            margin-left: 15px;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-custom .social-icons a:hover {
+            transform: scale(1.2);
+            color: #f4a300;
+        }
+
+        .container {
+            max-width: 450px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideUp 1s ease-out;
+            text-align: center;
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .container h2 {
+            color: #f4a300;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            color: #bbb;
+            text-align: left;
+            display: block;
+        }
+
+        .form-group input {
+            border: 1px solid #f4a300;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: #f4a300;
+            border: none;
+            color: black;
+            padding: 12px 0;
+            width: 100%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff8f00;
+            transform: translateY(-2px);
+        }
+
+        .custom-link {
+            color: #f4a300;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .custom-link:hover {
+            color: #ffecb3;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 15px 0;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .alert-danger {
+            animation: shake 0.5s ease;
+            background-color: #ff4c4c;
+            color: #fff;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+<header class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">PayNest Bank</a>
+    
+</header>
+
+<div class="container">
+    <h2 class="text-center">Login</h2>
+    <form method="post" th:action="@{/login}" autocomplete="off">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input id="username" type="text" class="form-control" name="username" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input id="password" type="password" class="form-control" name="password" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="btn">Login</button>
+    </form>
+    <p class="text-center mt-3">Don't have an account? <a href="/register" class="custom-link">Register here</a></p>
+
+    <div th:if="${param.error}" class="alert alert-danger mt-3 text-center">
+        Invalid username or password.
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2024 Code With . All rights reserved. | <a href="#" class="custom-link">Privacy Policy</a> | <a href="#" class="custom-link">Terms of Service</a></p>
+</footer>
+
+</body>
+</html>
